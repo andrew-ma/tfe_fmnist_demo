@@ -5,7 +5,7 @@
 #%%
 import os
 
-CPU_ONLY = False
+CPU_ONLY = True
 
 if CPU_ONLY:
     # Set to CPU only
@@ -43,22 +43,11 @@ print("Using", training_device)
 #%%
 import tf_encrypted as tfe
 
-#%%
-from IPython import get_ipython
-ipython = get_ipython()
-
-def magic(magic_string):
-    if '__IPYTHON__' in globals():
-        ipython.magic(magic_string)
-    else:
-        print("Not running magic:", magic_string)
 
 #%%
 def cur_time_str():
     return datetime.datetime.now().strftime("%m%d%Y_%H%M%S")
 #%%
-magic('load_ext tensorboard')
-
 TENSORBOARD_DIR = "tb"
 
 tfe.set_tfe_trace_flag(True)
@@ -100,14 +89,14 @@ y_test = tf.keras.utils.to_categorical(y_test, num_classes)
 
 #%%
 batch_size = 128
-epochs = 30
+epochs = 10
 
 model = tf.keras.Sequential([
           tf.keras.layers.Conv2D(16, 8,
                                  strides=2,
                                  padding='same',
                                  activation='relu',
-                                 input_shape=(28, 28, 1)),
+                                 input_shape=input_shape),
           tf.keras.layers.AveragePooling2D(2, 1),
           tf.keras.layers.Conv2D(32, 4,
                                  strides=2,
@@ -160,8 +149,3 @@ model.fit(x_train, y_train,
 # best_weights_filename = sorted(os.listdir(os.path.join(cur_run_checkpoints_folder)))[0]
 # model.load_weights(best_weights_filename)
 
-
-# evaluate model
-score = model.evaluate(x_test, y_test, verbose=0)
-print('Test loss:', score[0])
-print('Test accuracy:', score[1])
