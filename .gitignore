@@ -19,3 +19,5 @@ tb/step*
 !model_server.py
 !model_prediction.py
 !prediction_client.py
+!tfe_running.png
+!tfe_running.mp4

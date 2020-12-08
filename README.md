@@ -31,4 +31,7 @@ Command for running each compute server
 ```python -m tf_encrypted.player --config tfe.config {key_in_config_file}```
 
 
-# tests were run with checkpoint/12082020_063944_GPU/12082020_063944_GPU_E27_L0.293.h5 model weights
+### tests were run with checkpoint/12082020_063944_GPU/12082020_063944_GPU_E27_L0.293.h5 model weights
+
+
+https://tensorboard.dev/experiment/Jv0NnD9tRECQA6GU8RBYTA/
