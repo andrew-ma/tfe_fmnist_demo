@@ -1,0 +1,7 @@
+*
+!.gitignore
+!README.md
+!tfe.config
+!/tb**
+!/checkpoint**
+!main_train_model_on_plaintext.py
